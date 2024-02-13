@@ -12,7 +12,8 @@ def main():
     write_function = []
     for interface in abi:
         if interface["type"] == "function":
-            if interface["stateMutability"] == "view":
+            if interface["stateMutability"] == "view" or \
+                interface["stateMutability"] == "pure":
                 read_function.append(interface["name"])
             else:
                 write_function.append(interface["name"])
