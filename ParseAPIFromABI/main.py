@@ -6,7 +6,14 @@ def main():
     data = json.load(f)
     f.close()
 
-    abi = json.loads(data["result"])
+    abi = []
+    if type(data) == dict:
+        abi = json.loads(data["result"])
+    elif type(data) == list:
+        abi = data
+    else:
+        print(data)
+        raise ("unkown data type")
 
     read_function = []
     write_function = []
